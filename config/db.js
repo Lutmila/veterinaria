@@ -1,13 +1,13 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 
-const dbconect = async()=>{
-    try{
-            await mongoose.connect("mongodb://localhost:27017/veterinaria");
-            console.log("conexion exitosa");
-    }catch(error){
-        console.log('error en la conexion de la base de datos',error)
-        process.exit(1);
-    }
+const dbconnect = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Conexion exitosa a MongoDB Atlas");
+  } catch (error) {
+    console.error("Error al conectar a MongoDB Atlas:", error.message);
+  }
 };
 
-module.exports = dbconect;
+module.exports = dbconnect;

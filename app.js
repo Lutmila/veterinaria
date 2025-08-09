@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
-const dbconect = require('./config/db')
-const vetRoutes = require('./routes/veterinaria')
+const dbconect = require('./config/db');
+
+const clienteRoutes = require('./routes/cliente');
+const mascotaRoutes = require('./routes/mascota');
 
 app.use(express.json());
-app.use(vetRoutes);
+
+app.use('/clientes',clienteRoutes);
+app.use('/mascotas',mascotaRoutes);
 
 app.get('/',(req,res)=>{
     res.send("Servidor funcionando correctamente");
