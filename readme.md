@@ -32,7 +32,6 @@ API REST para la gestión de clientes y mascotas en una veterinaria. Permite reg
    ```sh
    npm run dev
    ```
-5. El servidor estará disponible en `http://localhost:3000`.
 
 ## Estructura del Proyecto
 ```
