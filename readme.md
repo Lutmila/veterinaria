@@ -21,7 +21,7 @@ API REST para la gestión de clientes y mascotas en una veterinaria. Permite reg
 ## Cómo Instalar y Usar
 1. Clona el repositorio:
    ```sh
-   git clone <url-del-repo>
+   git clone <git@github.com:Lutmila/veterinaria.git>
    ```
 2. Instala las dependencias:
    ```sh
