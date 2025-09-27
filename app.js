@@ -1,9 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const dbconect = require('./config/db');
 
 const clienteRoutes = require('./routes/cliente');
 const mascotaRoutes = require('./routes/mascota');
+
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+}));
 
 app.use(express.json());
 
