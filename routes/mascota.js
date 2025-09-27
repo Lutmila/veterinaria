@@ -1,6 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const Mascota = require("../models/mascota");
+const {
+  crearMascota,
+  obtenerMascotasPorCliente,
+  obtenerTodasLasMascotas,
+  actualizarMascota,
+  eliminarMascota
+} = require("../controllers/mascota.controller");
 
 const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validarCampos");
@@ -13,30 +19,19 @@ router.post(
     check("edad", "la edad de la mascota debe ser un numero").isNumeric(),
     validarCampos,
   ],
-  async (req, res) => {
-    try {
-      const nuevaMascota = new Mascota(req.body);
-      const guardada = await nuevaMascota.save();
-      res.status(201).json(guardada);
-    } catch (error) {
-      res.status(400).json({ error: "Error al crear la mascota" });
-    }
-  }
+  crearMascota
 );
 
 // GET /mascotas?cliente_id=:id
-router.get("/", async (req, res) => {
-  const { cliente_id } = req.query;
-  try {
-    if (cliente_id) {
-      const mascotas = await Mascota.find({ cliente_id });
-      res.json(mascotas);
-    } else {
-      res.status(400).json({ error: "Falta el parametro cliente_id" });
-    }
-  } catch (error) {
-    res.status(400).json({ error: "Error al obtener mascotas" });
-  }
-});
+router.get("/", obtenerMascotasPorCliente);
+
+// PUT /mascotas/:id
+router.put("/:id", actualizarMascota);
+
+// DELETE /mascotas/:id
+router.delete("/:id", eliminarMascota);
+
+// GET /mascotas/all
+router.get("/all", obtenerTodasLasMascotas);
 
 module.exports = router;
