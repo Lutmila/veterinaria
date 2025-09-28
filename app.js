@@ -6,12 +6,7 @@ const dbconect = require('./config/db');
 const clienteRoutes = require('./routes/cliente');
 const mascotaRoutes = require('./routes/mascota');
 
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
+app.use(cors());
 app.use(express.json());
 
 app.use('/clientes',clienteRoutes);
