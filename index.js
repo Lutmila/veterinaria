@@ -1,3 +1,3 @@
-const app = require('../veterinaria/app.js');
+const app = require('./app.js');
 
 module.exports = (req, res) => app(req, res);
