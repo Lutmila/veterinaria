@@ -1,4 +1,4 @@
 const { createServer } = require('@vercel/express');
-const app = require('../app.js');
+const app = require('./app.js');
 
 module.exports = createServer(app);
